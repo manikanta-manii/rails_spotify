@@ -1,0 +1,37 @@
+<style>
+      .test{
+        font-size :2rem;
+        font-family:Verdana, sans-serif;
+        margin-right:1rem;
+      }
+      .profile{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+      }
+  </style>
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <%= link_to "Spotify" , root_path,class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="ml-auto d-flex">
+       <% if session[:user_id]==nil%>
+         <%= button_to "SignUp" , sign_up_path ,class: "btn btn-info my-2 mx-2 my-sm-0",method: :get %>
+          <%= button_to "SignIn" , sign_in_path ,class: "btn btn-info my-2 mx-2 my-sm-0",method: :get %>
+          <%end%>
+          <% if session[:user_id]%>
+         <div class="profile">
+          <div class="test">
+             <%= @demo.name %>
+          </div>
+          <div>
+          <%= button_to "Logout" , destroy_path ,class: "btn btn-danger my-2 mx-2 my-sm-0",method: :delete %>
+          </div>
+          </div>
+            <%end%>
+  </div>
+  </div>
+</nav>

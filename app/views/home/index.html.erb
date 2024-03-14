@@ -1,0 +1,5 @@
+Home Page
+<% if session[:user_id]%>
+    SHOW PLAYLIST OF USER <%= @demo.name %>
+<%= @demo.playlists.pluck(:name)%>
+<% end%>
